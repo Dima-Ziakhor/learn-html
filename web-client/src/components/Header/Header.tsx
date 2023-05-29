@@ -15,7 +15,7 @@ export const Header = (): JSX.Element => {
           <nav className="header__menu">
             <ul className="header__list">
               <li className="header__list-item">
-                <NavLink to="/learn/1" className="header__menu-link">
+                <NavLink to="/learn" className="header__menu-link">
                   Навчатися
                 </NavLink>
               </li>

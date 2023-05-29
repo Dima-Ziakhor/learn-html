@@ -1,5 +1,9 @@
 @import '../styles/_variables.scss';
 
+//:root {
+//  --content-font-size: 1.8rem;
+//}
+
 html {
   font-family: $mainFont;
   font-size: $mainFontSize;
@@ -9,4 +13,8 @@ html {
   margin: 0 auto;
   max-width: 144rem;
   padding: 0 2rem;
+}
+
+strong {
+  font-weight: 700;
 }

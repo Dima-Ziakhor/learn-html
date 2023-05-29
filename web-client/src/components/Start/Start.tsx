@@ -1,8 +1,14 @@
 import React from 'react';
 import { MainPageBackground } from '../MainPageBackground';
 import './Start.scss';
+import { useNavigate } from 'react-router-dom';
 
 export const Start = (): JSX.Element => {
+  const navigation = useNavigate();
+  const handleOnClickStart = (): void => {
+    navigation('/learn/1');
+  };
+
   return (
     <section className="start">
       <div className="start__bg">
@@ -20,7 +26,10 @@ export const Start = (): JSX.Element => {
               Нехай щастить! 😉
             </p>
 
-            <button className="start__btn">
+            <button
+              className="start__btn"
+              onClick={ handleOnClickStart }
+            >
               Почати!
             </button>
           </div>

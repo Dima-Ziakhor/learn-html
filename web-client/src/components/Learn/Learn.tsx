@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Pagination } from '../Pagination';
@@ -7,16 +7,52 @@ import theme from '../../store/theme';
 import './Learn.scss';
 
 export const Learn = observer((): JSX.Element => {
-  const { id = '1' } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [contentFontSize, setContentFontSize] = useState(1.8);
 
   useEffect(() => {
-    theme.fetchTheme(+id);
-
-    if (id !== '1') {
-      navigate(`/learn/${id}`);
+    if (!id) {
+      theme.fetchTheme(+1);
+      navigate('/learn/1');
+    } else {
+      theme.fetchTheme(+id);
     }
-  }, [theme.theme]);
+  }, [id]);
+
+  const handleChangeFontSize = (decrease: boolean): void => {
+    if (decrease) {
+      setContentFontSize(prev => prev - 0.1);
+
+      return;
+    }
+
+    setContentFontSize(prev => prev + 0.1);
+  };
+
+  const handleChangePage = useCallback((event: React.MouseEvent<HTMLButtonElement>): void => {
+    let currentPageId = parseInt(id ?? '1');
+
+    if (!currentPageId) {
+      return;
+    }
+
+    switch (event.currentTarget.getAttribute('data-name')) {
+      case 'next': {
+        currentPageId++;
+        navigate(`/learn/${currentPageId}`);
+
+        break;
+      }
+
+      case 'prev': {
+        currentPageId--;
+        navigate(`/learn/${currentPageId}`);
+
+        break;
+      }
+    }
+  }, [id]);
 
   return (
     <section className="learn">
@@ -34,7 +70,25 @@ export const Learn = observer((): JSX.Element => {
                     { theme.getTheme.title }
                   </h2>
                   <div className="learn__content-wrapper">
-                    <div className="learn__content">
+                    <div className="learn__content" style={ { fontSize: `${contentFontSize}rem`, lineHeight: `${contentFontSize + 0.2}rem` } }>
+                      <div className="learn__font-buttons">
+                        <button
+                          className="learn__font-btn learn__font-btn--increase"
+                          onClick={ () => { handleChangeFontSize(false) } }
+                          title="Збільшити шрифт"
+                        >
+                          A+
+                        </button>
+
+                        <button
+                          className="learn__font-btn learn__font-btn--decrease"
+                          onClick={ () => { handleChangeFontSize(true) } }
+                          title="Зменшити шрифт"
+                        >
+                          A-
+                        </button>
+                      </div>
+
                       <div className="learn__image-wrapper">
                         <img src={ `/images/${String(theme.getTheme.image)}` } alt="Image" className="learn__image"/>
                       </div>
@@ -44,7 +98,11 @@ export const Learn = observer((): JSX.Element => {
                         ))
                       }
 
-                      <Pagination amountOfPages={ 5 } />
+                      <Pagination
+                        currentPageId={ parseInt(id ?? '1') }
+                        amountOfPages={ 5 }
+                        handleChangePage={ handleChangePage }
+                      />
                     </div>
                   </div>
                 </>)

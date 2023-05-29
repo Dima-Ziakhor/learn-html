@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0.5rem;
   }
 
   &__link {
@@ -20,7 +21,8 @@
     transition: background-color $td $tf, color $td $tf;
 
     &:hover,
-    &:active {
+    &:active,
+    &.active {
       color: $primary-white;
       background-color: $mainColor;
     }
@@ -28,9 +30,9 @@
 
   &__btn {
     display: block;
-    width: 5rem;
-    height: 5rem;
-    padding: 1rem;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.5rem 0.5rem;
     background-color: $primary-white;
     border: none;
     border-radius: 0.5rem;
@@ -44,6 +46,31 @@
       display: block;
       width: 100%;
       height: 100%;
+      fill:  $primary-black;
+      transition: fill $td $tf;
+    }
+
+    &:hover,
+    &:active {
+      background-color: $mainColor;
+
+      & svg {
+        fill:  $primary-white;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      &:hover,
+      &:active {
+        background-color: $primary-white;
+
+        & svg {
+          fill:  $primary-black;
+        }
+      }
     }
   }
 }
