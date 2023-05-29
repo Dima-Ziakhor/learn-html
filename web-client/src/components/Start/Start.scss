@@ -1,0 +1,65 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/keyframes';
+
+.start {
+  position: relative;
+  height: calc(100vh - 6rem);
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  &__container {
+    height: 100%;
+  }
+
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    padding-bottom: 3rem;
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    color: $primary-white;
+    animation: fade-in 1s $tf;
+  }
+
+  &__text {
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    max-width: 70rem;
+    line-height: 2.4rem;
+    font-size: 2rem;
+    text-align: center;
+    color: $primary-white;
+    transform: translateY(10rem);
+    opacity: 0;
+    animation: fade-in 1s $tf 1s forwards;
+  }
+
+  &__btn {
+    @include button($primary-white, $mainColor);
+
+    transition: transform $td $tf, box-shadow $td $tf;
+    transform: translateY(10rem);
+    opacity: 0;
+    animation: fade-in 1s $tf 2s forwards;
+
+    &:active,
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 1.5rem $primary-white;
+    }
+  }
+}

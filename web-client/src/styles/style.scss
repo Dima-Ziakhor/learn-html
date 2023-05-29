@@ -1,0 +1,12 @@
+@import '../styles/_variables.scss';
+
+html {
+  font-family: $mainFont;
+  font-size: $mainFontSize;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 144rem;
+  padding: 0 2rem;
+}
