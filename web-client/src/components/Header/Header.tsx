@@ -9,7 +9,7 @@ export const Header = (): JSX.Element => {
       <div className="container">
         <div className="header__wrapper">
           <Link to="/" className="header__logo-wrapper">
-            <img src="/learn-html/images/logo.png" alt="Learn HTML logo" className="header__logo"/>
+            <img src={ `${process.env.PUBLIC_URL}/images/logo.png` } alt="Learn HTML logo" className="header__logo"/>
           </Link>
 
           <nav className="header__menu">
