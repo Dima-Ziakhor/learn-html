@@ -1,3 +1,1 @@
-const API_URL = window.location.origin;
-
-export const API_THEME = `${API_URL}/themes.json`;
+export const API_THEME = process.env.REACT_APP_API_URL ?? '';

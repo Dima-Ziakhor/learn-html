@@ -90,7 +90,7 @@ export const Learn = observer((): JSX.Element => {
                       </div>
 
                       <div className="learn__image-wrapper">
-                        <img src={ `/images/${String(theme.getTheme.image)}` } alt="Image" className="learn__image"/>
+                        <img src={ `/learn-html/images/${String(theme.getTheme.image)}` } alt="Image" className="learn__image"/>
                       </div>
                       {
                         theme.getTheme.paragraphs.map((par, index) => (
