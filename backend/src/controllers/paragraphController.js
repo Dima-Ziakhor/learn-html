@@ -1,11 +1,28 @@
 import { Paragraph } from '../models/Paragraph.js';
 
 async function get (req, res, next) {
-  const { paragraphId } = req.params;
+  const { themeId } = req.params;
 
-  console.log('Get paragraph: ', paragraphId);
+  if (!Number(themeId)) {
+    res.sendStatus(422);
+    return;
+  }
 
-  res.send(`Get paragraph: ${paragraphId}`)
+  const paragraphs = await Paragraph.findAll({
+    where: {
+      themeId
+    },
+    order: [
+      ['order', 'ASC']
+    ]
+  });
+
+  if (!paragraphs.length) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.send(paragraphs);
 }
 
 async function create (req, res, next) {

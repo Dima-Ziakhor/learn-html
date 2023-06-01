@@ -3,9 +3,23 @@ import { Theme } from '../models/Theme.js';
 async function get (req, res, next) {
   const { themeId } = req.params;
 
-  console.log('Get theme: ', themeId);
+  if (!Number(themeId)) {
+    res.sendStatus(422);
+    return;
+  }
 
-  res.send(`Get theme: ${themeId}`)
+  const theme = await Theme.findOne({
+    where: {
+      id: themeId
+    }
+  });
+
+  if (!theme) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.send(theme);
 }
 
 async function create (req, res, next) {
