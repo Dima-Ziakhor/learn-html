@@ -11,6 +11,9 @@ app.use(cors());
 app.use(express.json());
 app.use(themeRouter);
 app.use(paragraphRouter);
+app.get('/', (req, res) => {
+  res.send('Hello');
+});
 app.listen(PORT);
 
 export default app;
