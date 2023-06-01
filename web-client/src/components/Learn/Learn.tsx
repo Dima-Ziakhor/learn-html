@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Pagination } from '../Pagination';
+import { Loader } from '../Loader';
 import theme from '../../store/theme';
 
 import './Learn.scss';
@@ -9,14 +10,23 @@ import './Learn.scss';
 export const Learn = observer((): JSX.Element => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [contentFontSize, setContentFontSize] = useState(1.8);
 
   useEffect(() => {
+    setIsLoading(true);
+
     if (!id) {
-      theme.fetchTheme(+1);
+      theme.fetchTheme(+1)
+        .finally(() => {
+          setIsLoading(false);
+        });
       navigate('/learn/1');
     } else {
-      theme.fetchTheme(+id);
+      theme.fetchTheme(+id)
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   }, [id]);
 
@@ -59,52 +69,62 @@ export const Learn = observer((): JSX.Element => {
       <div className="container">
         <div className="learn__wrapper">
           {
-            !theme.getTheme
+            isLoading
               ? (
-                <h2 className="learn__title">
-                  Щось пішло не так 😔. Спробуй перезавантажити сторінку.
-                </h2>)
+                <div className="learn__loader">
+                  <Loader />
+                </div>)
               : (
                 <>
-                  <h2 className="learn__title">
-                    { theme.getTheme.title }
-                  </h2>
-                  <div className="learn__content-wrapper">
-                    <div className="learn__content" style={ { fontSize: `${contentFontSize}rem`, lineHeight: `${contentFontSize + 0.2}rem` } }>
-                      <div className="learn__font-buttons">
-                        <button
-                          className="learn__font-btn learn__font-btn--increase"
-                          onClick={ () => { handleChangeFontSize(false) } }
-                          title="Збільшити шрифт"
-                        >
-                          A+
-                        </button>
+                  {
+                    !theme.getTheme
+                      ? (
+                        <h2 className="learn__title">
+                          Щось пішло не так 😔. Спробуй перезавантажити сторінку.
+                        </h2>)
+                      : (
+                        <>
+                          <h2 className="learn__title">
+                            { theme.getTheme.title }
+                          </h2>
+                          <div className="learn__content-wrapper">
+                            <div className="learn__content" style={ { fontSize: `${contentFontSize}rem`, lineHeight: `${contentFontSize + 0.2}rem` } }>
+                              <div className="learn__font-buttons">
+                                <button
+                                  className="learn__font-btn learn__font-btn--increase"
+                                  onClick={ () => { handleChangeFontSize(false) } }
+                                  title="Збільшити шрифт"
+                                >
+                                  A+
+                                </button>
 
-                        <button
-                          className="learn__font-btn learn__font-btn--decrease"
-                          onClick={ () => { handleChangeFontSize(true) } }
-                          title="Зменшити шрифт"
-                        >
-                          A-
-                        </button>
-                      </div>
+                                <button
+                                  className="learn__font-btn learn__font-btn--decrease"
+                                  onClick={ () => { handleChangeFontSize(true) } }
+                                  title="Зменшити шрифт"
+                                >
+                                  A-
+                                </button>
+                              </div>
 
-                      <div className="learn__image-wrapper">
-                        <img src={ `${process.env.PUBLIC_URL}/images/${String(theme.getTheme.image)}` } alt="Image" className="learn__image"/>
-                      </div>
-                      {
-                        theme.getTheme.paragraphs.map((par, index) => (
-                          <div key={ index } className="learn__text" dangerouslySetInnerHTML={{ __html: par }}></div>
-                        ))
-                      }
+                              <div className="learn__image-wrapper">
+                                <img src={ `${process.env.PUBLIC_URL}/images/${String(theme.getTheme.image)}` } alt="Image" className="learn__image"/>
+                              </div>
+                              {
+                                theme.getTheme.paragraphs.map((par, index) => (
+                                  <div key={ index } className="learn__text" dangerouslySetInnerHTML={{ __html: par }}></div>
+                                ))
+                              }
 
-                      <Pagination
-                        currentPageId={ parseInt(id ?? '1') }
-                        amountOfPages={ 5 }
-                        handleChangePage={ handleChangePage }
-                      />
-                    </div>
-                  </div>
+                              <Pagination
+                                currentPageId={ parseInt(id ?? '1') }
+                                amountOfPages={ 5 }
+                                handleChangePage={ handleChangePage }
+                              />
+                            </div>
+                          </div>
+                        </>)
+                  }
                 </>)
           }
         </div>

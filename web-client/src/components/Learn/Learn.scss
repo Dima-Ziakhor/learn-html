@@ -5,6 +5,15 @@
   padding: 5rem 0 2rem;
   min-height: 100vh;
 
+  &__loader {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+  }
+
   &__title {
     padding-top: 5rem;
     font-size: 3rem;
