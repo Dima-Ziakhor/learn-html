@@ -5,4 +5,6 @@ const {
   POSTGRES_URL,
 } = process.env;
 
-export const sequelize = new Sequelize(`${POSTGRES_URL}?sslmode=require`);
+export const sequelize = new Sequelize(`${POSTGRES_URL}?sslmode=require`, {
+  dialectModule: require('pg')
+});
