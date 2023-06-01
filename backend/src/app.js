@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import 'pg';
 import express from 'express';
 import cors from 'cors';
 import { themeRouter } from './routes/themeRouter.js';
