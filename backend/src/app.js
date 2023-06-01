@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(themeRouter);
 app.use(paragraphRouter);
 app.get('/', (req, res) => {
-  res.send('Hello');
+  res.send('Hello!');
 });
 app.listen(PORT);
 
