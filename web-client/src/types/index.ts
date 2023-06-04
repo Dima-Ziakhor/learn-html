@@ -21,3 +21,11 @@ export interface NormalizedTheme {
   image: string
   paragraphs: string[]
 }
+
+export interface TagType {
+  id: number
+  name: string
+  description: string
+  created_At: string
+  updated_At: string
+}

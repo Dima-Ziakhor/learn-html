@@ -5,6 +5,8 @@ import { Start } from '../Start';
 import { Learn } from '../Learn';
 import { About } from '../About/';
 import { AuthorAndSupport } from '../AuthorAndSupport';
+import { More } from '../More';
+import { AllTagsTable } from '../AllTagsTable';
 
 import './App.scss';
 
@@ -18,6 +20,9 @@ export const App = (): JSX.Element => {
         <Route path="learn" element={ <Learn /> } />
         <Route path="about" element={ <About /> } />
         <Route path="author-and-support" element={ <AuthorAndSupport /> } />
+        <Route path="more" element={ <More /> }>
+          <Route path="all-tags" element={ <AllTagsTable /> } />
+        </Route>
       </Routes>
     </>
   );
