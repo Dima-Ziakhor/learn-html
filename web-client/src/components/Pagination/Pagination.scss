@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .pagination {
   padding: 1rem 0;
@@ -29,48 +30,6 @@
   }
 
   &__btn {
-    display: block;
-    width: 3rem;
-    height: 3rem;
-    padding: 0.5rem 0.5rem;
-    background-color: $primary-white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1.8rem;
-    color: $primary-black;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color $td $tf, color $td $tf;
-
-    & svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-      fill:  $primary-black;
-      transition: fill $td $tf;
-    }
-
-    &:hover,
-    &:active {
-      background-color: $mainColor;
-
-      & svg {
-        fill:  $primary-white;
-      }
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-
-      &:hover,
-      &:active {
-        background-color: $primary-white;
-
-        & svg {
-          fill:  $primary-black;
-        }
-      }
-    }
+    @include navBtn(3rem, 3rem);
   }
 }

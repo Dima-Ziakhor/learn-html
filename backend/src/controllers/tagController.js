@@ -1,7 +1,22 @@
 import { Tag } from '../models/Tag.js';
 
-async function get(req, res, next) {
+async function getByParam(req, res, next) {
+  const { params } = req.params;
 
+  if (!params) {
+    res.send(422);
+    return;
+  }
+
+  const tags = await Tag.findAll();
+  const tagsFiltered = tags.filter(tag => tag.name.includes(params));
+
+  if (!tagsFiltered.length) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.send(tagsFiltered);
 }
 
 async function getAll(req, res, next) {
@@ -34,7 +49,7 @@ async function create(req, res, next) {
 }
 
 export const tagController = {
-  get,
+  getByParam,
   getAll,
   create
 };

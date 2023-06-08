@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import type { TagType } from '../../types';
+import { Loader } from '../Loader';
 import { fetchTags } from '../../requests/theme';
 
 import './AllTagsTable.scss';
 
 export const AllTagsTable = (): JSX.Element => {
   const [tags, setTags] = useState<TagType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const tagsFromServer = await fetchTags();
 
       setTags(tagsFromServer);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -21,35 +25,43 @@ export const AllTagsTable = (): JSX.Element => {
         Всі HTML теги
       </h3>
 
-      <table className="tags-table__table">
-        <thead>
-          <tr>
-            <th>
-              Теги
-            </th>
+      {
+        isLoading
+          ? (
+            <div className="tags-table__loader">
+              <Loader />
+            </div>)
+          : (
+            <table className="tags-table__table">
+              <thead className="tags-table__head">
+                <tr className="tags-table__row">
+                  <th className="tags-table__block tags-table__block--left">
+                    Теги
+                  </th>
 
-            <th>
-              Пояснення
-            </th>
-          </tr>
-        </thead>
+                  <th className="tags-table__block tags-table__block--right">
+                    Пояснення
+                  </th>
+                </tr>
+              </thead>
 
-        <tbody>
-          {
-            tags.map(({ id, name, description }: TagType) => (
-              <tr key={ id }>
-                <td>
-                  { name }
-                </td>
+              <tbody className="tags-table__body">
+                {
+                  tags.map(({ id, name, description }: TagType) => (
+                    <tr key={ id } className="tags-table__row">
+                      <td className="tags-table__block tags-table__block--left">
+                        { name }
+                      </td>
 
-                <td>
-                  { description }
-                </td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+                      <td className="tags-table__block tags-table__block--right">
+                        { description }
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>)
+      }
     </div>
   );
 };

@@ -1,12 +1,75 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .more {
   padding: 2rem 0;
-  height: calc(100vh - 6rem);
+  min-height: calc(100vh - 6rem);
   background-color: $mainColor;
+
+  &__wrapper {
+    position: relative;
+  }
 
   &__title {
     font-size: 2.5rem;
     color: $primary-white;
+  }
+
+  &__nav-btn {
+    @include navBtn(5rem, 5rem);
+
+    position: absolute;
+    top: 10rem;
+    background-color: transparent;
+    transition: transform $td $tf;
+
+    & svg {
+      fill: $primary-white;
+    }
+
+    &--prev {
+      left: 3rem;
+
+      &:hover,
+      &:active {
+        transform: translateX(-1rem);
+        background-color: transparent;
+      }
+    }
+
+    &--next {
+      right: 3rem;
+
+      &:hover,
+      &:active {
+        transform: translateX(1rem);
+      }
+    }
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+
+      & svg {
+        fill: #fff;
+      }
+    }
+
+    &:disabled {
+      &:hover,
+      &:active {
+        background-color: transparent;
+        transform: translateX(0);
+
+        & svg {
+          fill: #fff;
+        }
+      }
+    }
+  }
+
+  &__content {
+    margin: 0 auto;
+    max-width: 120rem;
   }
 }

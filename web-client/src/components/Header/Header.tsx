@@ -33,7 +33,7 @@ export const Header = (): JSX.Element => {
               </li>
 
               <li className="header__list-item">
-                <NavLink to="/more" className="header__menu-link">
+                <NavLink to="/more/all-tags" className="header__menu-link">
                   Більше
                 </NavLink>
               </li>

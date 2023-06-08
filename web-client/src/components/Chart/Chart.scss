@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+
+.chart {
+  &__container {
+    background-color: $primary-white;
+  }
+
+  &__title {
+    padding-bottom: 2rem;
+    font-size: 2rem;
+    color: $primary-white;
+  }
+
+  &__field {
+    padding-bottom: 2rem;
+  }
+
+  &__field-title {
+    padding-bottom: 1rem;
+    font-size: 1.6rem;
+    color: $primary-white;
+  }
+
+  &__input {
+    display: block;
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: $primary-white;
+    outline: none;
+    font-family: inherit;
+    font-size: 1.6rem;
+    color: $primary-black;
+  }
+}

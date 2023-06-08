@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+
+.tags-table {
+  &__title {
+    padding-bottom: 2rem;
+    font-size: 2.4rem;
+    color: $primary-white;
+    text-align: center;
+  }
+
+  &__loader {
+    margin: 0 auto;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__table {
+    display: block;
+    margin: 0 auto;
+    max-width: 100rem;
+    border: 0.2rem solid $primary-white;
+  }
+
+  &__row {
+    width: 100%;
+    line-height: 2rem;
+    font-size: 1.6rem;
+  }
+
+  &__block {
+    padding: 1rem;
+
+    &--left {
+      width: 20%;
+    }
+
+    &--right {
+      width: 80%;
+    }
+  }
+
+  &__head {
+    & th {
+      font-weight: 700;
+      background-color: rgba($color: $primary-white, $alpha: 0.5);
+    }
+  }
+
+  &__body {
+    & tr {
+      &:not(:last-child) {
+        border-bottom: 0.1rem solid $primary-black;
+      }
+
+      &:nth-child(2n) {
+        background-color: rgba($color: $primary-white, $alpha: 0.5);
+      }
+
+      &:nth-child(2n + 1) {
+        background-color: $primary-white;
+      }
+    }
+  }
+}
