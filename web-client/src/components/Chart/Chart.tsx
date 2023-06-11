@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { CategoryScale, Chart, LinearScale, PointElement, LineElement } from 'chart.js';
+import { CategoryScale, Chart as ChartJS, LinearScale, PointElement, LineElement } from 'chart.js';
 import type { ChartOptions } from 'chart.js';
 
 import './Chart.scss';
 
-Chart.register(
+ChartJS.register(
   CategoryScale,
   PointElement,
   LinearScale,
   LineElement
 );
 
-export const ChartView = (): JSX.Element => {
+export const Chart = (): JSX.Element => {
   const [k, setK] = useState(1);
 
   const generateData = (): Array<{ x: number, y: number }> => {

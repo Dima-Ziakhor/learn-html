@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { TagType } from '../../types';
 import { Loader } from '../Loader';
-import { fetchTags } from '../../requests/theme';
+import { fetchTags } from '../../requests/tags';
 
 import './AllTagsTable.scss';
 

@@ -1,5 +1,5 @@
-import { API_THEME, API_PARAGRAPHS, API_TAGS } from './apiUrls';
-import type { ThemeType, Paragraph, TagType } from '../types';
+import { API_THEME, API_PARAGRAPHS } from './apiUrls';
+import type { ThemeType, Paragraph } from '../types';
 
 export const fetchTheme = async (id: number): Promise<ThemeType> => {
   try {
@@ -20,13 +20,3 @@ export const fetchParagraphs = async (themeId: number): Promise<Paragraph> => {
     throw new Error('Failed to fetch paragraphs (level 1).');
   }
 }
-
-export const fetchTags = async (): Promise<TagType[]> => {
-  try {
-    const request = await fetch(API_TAGS);
-
-    return await request.json();
-  } catch (err) {
-    throw new Error('Failed to fetch tags');
-  }
-};

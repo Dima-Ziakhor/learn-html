@@ -97,3 +97,22 @@
     padding-bottom: 2rem;
   }
 }
+
+@mixin moreTitle {
+  padding-bottom: 2rem;
+  font-size: 2.4rem;
+  color: $primary-white;
+  text-align: center;
+}
+
+@mixin moreInput {
+  display: block;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: $primary-white;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.6rem;
+  color: $primary-black;
+}

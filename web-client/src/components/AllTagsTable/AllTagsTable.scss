@@ -1,11 +1,8 @@
-@import '../../styles/variables';
+@import '../../styles/mixins';
 
 .tags-table {
   &__title {
-    padding-bottom: 2rem;
-    font-size: 2.4rem;
-    color: $primary-white;
-    text-align: center;
+    @include moreTitle;
   }
 
   &__loader {

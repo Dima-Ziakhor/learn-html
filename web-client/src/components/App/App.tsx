@@ -7,7 +7,7 @@ import { About } from '../About/';
 import { AuthorAndSupport } from '../AuthorAndSupport';
 import { More } from '../More';
 import { AllTagsTable } from '../AllTagsTable';
-import { ChartView } from '../Chart';
+import { Chart } from '../Chart';
 import { FindTag } from '../FindTag';
 
 import './App.scss';
@@ -24,7 +24,7 @@ export const App = (): JSX.Element => {
         <Route path="author-and-support" element={ <AuthorAndSupport /> } />
         <Route path="more" element={ <More /> }>
           <Route path="all-tags" element={ <AllTagsTable /> } />
-          <Route path="chart" element={ <ChartView /> } />
+          <Route path="chart" element={ <Chart /> } />
           <Route path="find" element={ <FindTag /> } />
         </Route>
       </Routes>
