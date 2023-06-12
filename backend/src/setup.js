@@ -1,5 +1,5 @@
 import 'dotenv/config';
 import { sequelize } from './utils/db.js';
-import './models/Tag.js';
+import './models/Question.js';
 
 await sequelize.sync({ force: true });

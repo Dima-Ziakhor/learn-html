@@ -5,6 +5,7 @@ import cors from 'cors';
 import { themeRouter } from './routes/themeRouter.js';
 import { paragraphRouter } from './routes/paragraphRouter.js';
 import { tagRouter } from './routes/tagRouter.js';
+import { questionRouter } from './routes/questionRouter.js';
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(themeRouter);
 app.use(paragraphRouter);
 app.use(tagRouter);
+app.use(questionRouter);
 app.get('/', (req, res) => {
   res.send('Hello!');
 });
