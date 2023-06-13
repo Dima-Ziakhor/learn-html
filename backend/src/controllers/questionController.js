@@ -24,10 +24,12 @@ async function getQuestion(req, res) {
 }
 
 async function getQuestionsArrayForTest (req, res) {
-  const questions = await Question.findAll();
+  const questions = await Question.findAll({
+    attributes: ['id', 'title', 'answers', 'correct']
+  });
   const oneAnswerQuestions = questions.filter(q => q.correct.length < 2);
   const twoAnswerQuestions = questions.filter(q => q.correct.length > 1);
-  const questionsForTest = [];
+  let questionsForTest = [];
 
   for (let i = 0; i < 3; i ++) {
     const oneAnswerIndex = randomInt(0, oneAnswerQuestions.length - 1);

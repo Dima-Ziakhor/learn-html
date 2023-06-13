@@ -29,3 +29,10 @@ export interface TagType {
   created_At: string
   updated_At: string
 }
+
+export interface QuestionType {
+  id: number,
+  title: string,
+  answers: string[],
+  correct: string[]
+}
