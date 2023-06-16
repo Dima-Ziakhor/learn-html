@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.result {
+  &__content {
+    margin: 0 auto;
+    max-width: 80rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: $primary-white;
+  }
+
+  &__text {
+    padding-bottom: 2rem;
+    line-height: 2.2rem;
+    font-size: 1.8rem;
+  }
+}

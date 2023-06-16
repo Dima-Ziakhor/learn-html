@@ -36,3 +36,8 @@ export interface QuestionType {
   answers: string[],
   correct: string[]
 }
+
+export interface UserAnswer {
+  index: number
+  answers: string[]
+}

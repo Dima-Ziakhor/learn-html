@@ -37,6 +37,12 @@ export const Header = (): JSX.Element => {
                   Більше
                 </NavLink>
               </li>
+
+              <li className="header__list-item">
+                <NavLink to="/test" className="header__menu-link">
+                  Пройти тест
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </div>

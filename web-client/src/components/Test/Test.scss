@@ -1,0 +1,57 @@
+@import '../../styles/mixins';
+
+.test {
+  padding-top: 6rem;
+  background-color: $mainColor;
+  height: calc(100vh - 6rem);
+
+  &__wrapper {
+    max-width: 120rem;
+    margin: 0 auto;
+  }
+
+  &__loader {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+  }
+
+  &__title {
+    padding-bottom: 3rem;
+    line-height: 2.4rem;
+    font-size: 2.2rem;
+    color: $primary-white;
+    text-align: center;
+  }
+
+  &__content {
+    margin: 0 auto;
+    max-width: 70rem;
+    padding: 2rem;
+    background-color: $primary-white;
+    border-radius: 1rem;
+  }
+
+  &__info {
+    padding-bottom: 2rem;
+    line-height: 2.4rem;
+    font-size: 1.8rem;
+    color: $primary-black;
+    text-align: center;
+  }
+
+  &__btn {
+    @include button($mainColor, $primary-white);
+    transition: box-shadow $td $tf, transform $td $tf;
+
+    &:hover,
+    &:active {
+      transform: scale(1.03);
+      box-shadow: 0 0.5rem 2rem $mainColor;
+    }
+  }
+
+  &__current {
+    width: 100%;
+  }
+}

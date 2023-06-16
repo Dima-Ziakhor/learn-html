@@ -1,0 +1,65 @@
+@import '../../styles/mixins';
+
+.question {
+  padding: 2rem;
+  width: 100%;
+  background-color: $primary-white;
+  border-radius: 1rem;
+
+  &__text {
+    padding-bottom: 3rem;
+    line-height: 2.4rem;
+    font-size: 1.8rem;
+    color: $primary-black;
+  }
+
+  &__answers {
+    padding-left: 2rem;
+  }
+
+  &__list {
+    list-style: lower-latin;
+  }
+
+  &__list-item {
+    position: relative;
+
+    &::marker {
+      font-size: 1.6rem;
+      color: $primary-black;
+    }
+  }
+
+  &__list-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__label {
+    line-height: 1.8rem;
+    font-size: 1.6rem;
+    color: $primary-black;
+  }
+
+  &__next {
+    padding-top: 3rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__next-btn {
+    @include button($mainColor, $primary-white);
+
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    transition: opacity $td $tf;
+
+    &:hover,
+    &:active {
+      opacity: 0.8;
+    }
+  }
+}

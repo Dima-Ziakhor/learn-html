@@ -9,6 +9,7 @@ import { More } from '../More';
 import { AllTagsTable } from '../AllTagsTable';
 import { Chart } from '../Chart';
 import { FindTag } from '../FindTag';
+import { Test } from '../Test';
 
 import './App.scss';
 
@@ -27,6 +28,7 @@ export const App = (): JSX.Element => {
           <Route path="chart" element={ <Chart /> } />
           <Route path="find" element={ <FindTag /> } />
         </Route>
+        <Route path="test" element={ <Test /> } />
       </Routes>
     </>
   );
